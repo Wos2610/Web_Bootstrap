@@ -15,22 +15,14 @@
          </div>
       </div>
       <div class="row g-5">
-         <div class="col-lg-4 col-md-6">
-            <div class="d-flex flex-column text-start footer-item">
-               <h4 class="text-light mb-3">Thông Tin Của Shop</h4>
-               <a class="btn-link" href="">Về Chúng Mình</a>
-            </div>
-         </div>
-         <div class="col-lg-4 col-md-6">
+         <div class="col-lg-6 col-md-6">
             <div class="d-flex flex-column text-start footer-item">
                <h4 class="text-light mb-3">Sản Phẩm</h4>
-               <!-- <a class="btn-link" href="">Tài Khoản Của Bạn</a> -->
                <a class="btn-link" href="shop.php">Các Sản Phẩm Của Shop</a>
                <a class="btn-link" href="cart.php">Giỏ Hàng</a>
-               <!-- <a class="btn-link" href="">Lịch Sử Mua Hàng</a> -->
             </div>
          </div>
-         <div class="col-lg-4 col-md-6">
+         <div class="col-lg-6 col-md-6">
             <div class="footer-item">
                <h4 class="text-light mb-3">Liên Hệ</h4>
                <p>Địa chỉ: Shop online tại Hà Nội, Bắc Ninh</p>

@@ -108,7 +108,7 @@ const productData = {
 };
 
 // Function để tạo ra các phần tử hoa quả
-function createFruitItem(imgSrc, category, name, description, price) {
+function createProductItem(imgSrc, category, name, description, price) {
     return `
     <div class="col-md-6 col-lg-4 col-xl-3">
         <div class="rounded position-relative fruite-item border border-secondary d-flex flex-column" onclick="redirectToShopDetail()">
@@ -132,7 +132,7 @@ function createFruitItem(imgSrc, category, name, description, price) {
 
 // Hàm chuyển hướng sang trang shop_detail.php
 function redirectToShopDetail() {
-    window.location.href = "shop-detail.php";
+    window.location.href = "#";
 }
 
 function createThreeItemPerRow(imgSrc, category, name, description, price) {
@@ -164,7 +164,7 @@ function addItems(tabId, productData) {
     const fruitsRow = $(`#${tabId}`);
     if (fruitsRow != null) {
         productData.forEach(fruit => {
-            const fruitItem = createFruitItem(fruit.imgSrc, fruit.category, fruit.name, fruit.description, fruit.price);
+            const fruitItem = createProductItem(fruit.imgSrc, fruit.category, fruit.name, fruit.description, fruit.price);
             fruitsRow.append(fruitItem);
         });
         console.log("aaaaaaaaaaaaaa");
@@ -248,53 +248,6 @@ function populateCategoryList(categorieData) {
             categoryList.appendChild(catrgoryItem);
         });
     }
-}
-
-function handleProductRows() {
-    document.querySelectorAll('tbody tr').forEach(function(row) {
-        var quantityInput = row.querySelector('.quantity-input'); // Phần input số lượng
-        var totalPrice = row.querySelector('.total-price'); // Phần hiển thị tổng tiền
-        var deleteBtn = row.querySelector('.delete-btn'); // Nút xóa sản phẩm
-        var plusBtn = row.querySelector('.btn-plus'); // Nút tăng số lượng
-        var minusBtn = row.querySelector('.btn-minus'); // Nút giảm số lượng
-
-        // Hàm tính tổng tiền của sản phẩm
-        function calculateTotalPrice() {
-            var priceStr = row.querySelectorAll('td')[2].innerText; // Lấy giá sản phẩm
-            var price = parseFloat(priceStr.replace('đ', '')); // Chuyển đổi giá thành số
-            var quantity = parseInt(quantityInput.value); // Lấy số lượng từ input
-            var total = price * quantity; // Tính tổng tiền
-            totalPrice.innerText = total.toFixed(2) + 'đ'; // Hiển thị tổng tiền
-        }
-
-        // Gọi hàm tính tổng tiền khi trang được tải
-        calculateTotalPrice();
-
-        // Thêm sự kiện khi thay đổi số lượng
-        quantityInput.addEventListener('input', function() {
-            calculateTotalPrice(); // Gọi hàm tính tổng tiền khi số lượng thay đổi
-        });
-
-        // Thêm sự kiện khi nhấn vào nút tăng số lượng
-        plusBtn.addEventListener('click', function() {
-            quantityInput.value = parseInt(quantityInput.value) + 1; // Tăng số lượng lên 1
-            calculateTotalPrice(); // Cập nhật tổng tiền
-        });
-
-        // Thêm sự kiện khi nhấn vào nút giảm số lượng
-        minusBtn.addEventListener('click', function() {
-            var currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1; // Giảm số lượng xuống 1, nhưng không được nhỏ hơn 1
-                calculateTotalPrice(); // Cập nhật tổng tiền
-            }
-        });
-
-        // Thêm sự kiện khi nhấn vào nút xóa sản phẩm
-        // deleteBtn.addEventListener('click', function() {
-        //     row.remove(); // Xóa hàng sản phẩm
-        // });
-    });
 }
     
 var checkOutData = [
@@ -560,10 +513,6 @@ function filterProducts() {
     populateCategoryList(categorieData);
 
     addAllItems("all-items", productData["tab1"]);
-
-    handleProductRows();
-
-    // generateCheckoutProductRows(checkOutData);
 
     sortProducts();
 
